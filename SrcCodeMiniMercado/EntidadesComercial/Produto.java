@@ -1,8 +1,5 @@
 package EntidadesComercial;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Produto {
 	private Integer codProd;
 	private String nomeProd;
@@ -15,6 +12,16 @@ public class Produto {
 		this.nomeProd = nomeProd;
 	}
 	
+		
+	public Produto(Integer codProd, String nomeProd, Double precoProd, Integer qtdEstoque) {
+		super();
+		this.codProd = codProd;
+		this.nomeProd = nomeProd;
+		this.precoProd = precoProd;
+		this.qtdEstoque = qtdEstoque;
+	}
+
+
 	public boolean comparaProd (Produto prod) {
 		if(prod.getCodProd() == this.getCodProd()) {
 			return true;

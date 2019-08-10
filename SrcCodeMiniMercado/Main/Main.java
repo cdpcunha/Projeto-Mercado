@@ -1,28 +1,49 @@
 package Main;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import EntidadesComercial.Produto;
-import ServiçosComercial.TestaProdutoInsercao;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 	Scanner sc = new Scanner(System.in);
-	System.out.println("Quantidade de produtos a serem inseridos ?");
-	int count = sc.nextInt();
-	ArrayList<Produto> listProd = new ArrayList<Produto>();
-	Produto p0 = new Produto(0,"Nao Alterar");
-	listProd.add(p0);
-	TestaProdutoInsercao testProdInsert = new TestaProdutoInsercao();
+	ArrayList<Produto> listaProd = new ArrayList<Produto>();
 	
-	for(int i =0;i<count;i++) {
-		testProdInsert.validaInstanciaCriaProd(listProd);
+	//Lista de arquivo -- Posterior acesso em banco relacional
+	
+	File arquivoProdutosEntrada = new File("C:\\Users\\Peixe\\Desktop\\Projeto Mini-Mercado\\Mini-Mercado\\arquivos\\Produtos.txt");
+	
+	try (BufferedReader br = new BufferedReader(new FileReader(arquivoProdutosEntrada))){
+		String linha = br.readLine();
+		String aux[] =linha.split(",");
+		while(linha != null) {
+			Produto prod = new Produto(Integer.parseInt(aux[0]), aux[1], Double.parseDouble(aux[2]), Integer.parseInt(aux[3]));
+			listaProd.add(prod);
+			linha = br.readLine();
+		}
 	}
+	catch(IOException e) {
+		System.out.println(e.getLocalizedMessage());
+	}
+	
+	Menu.menuDisplay();
+	int op = sc.nextInt();
+	
+	while(op != 0) {
+		
+	}
+	sc.nextLine();
+	
+	
 	
 	
 	sc.close();
 	}
-
 }	
