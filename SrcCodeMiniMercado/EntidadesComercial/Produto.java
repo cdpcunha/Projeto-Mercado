@@ -3,32 +3,21 @@ package EntidadesComercial;
 public class Produto {
 	private Integer codProd;
 	private String nomeProd;
-	private Double precoProd;
-	private Integer qtdEstoque;
-	
-	public Produto(Integer codProd, String nomeProd) {
+	private String Marca;
+	private Double preco;
+	private Integer qtdEst;
+
+	public Produto() {
+		super();
+	}
+
+	public Produto(Integer codProd, String nomeProd, String marca) {
 		super();
 		this.codProd = codProd;
 		this.nomeProd = nomeProd;
-	}
-	
-		
-	public Produto(Integer codProd, String nomeProd, Double precoProd, Integer qtdEstoque) {
-		super();
-		this.codProd = codProd;
-		this.nomeProd = nomeProd;
-		this.precoProd = precoProd;
-		this.qtdEstoque = qtdEstoque;
+		Marca = marca;
 	}
 
-
-	public boolean comparaProd (Produto prod) {
-		if(prod.getCodProd() == this.getCodProd()) {
-			return true;
-		}
-		else return false;
-	}
-		
 	public Integer getCodProd() {
 		return codProd;
 	}
@@ -45,27 +34,60 @@ public class Produto {
 		this.nomeProd = nomeProd;
 	}
 
-	public Double getPrecoProd() {
-		return precoProd;
+	public String getMarca() {
+		return Marca;
 	}
 
-	public void setPrecoProd(Double precoProd) {
-		this.precoProd = precoProd;
+	public void setMarca(String marca) {
+		Marca = marca;
 	}
 
-	public Integer getQtdEstoque() {
-		return qtdEstoque;
+	public Double getPreco() {
+		return preco;
 	}
 
-	public void setQtdEstoque(Integer qtdEstoque) {
-		this.qtdEstoque = qtdEstoque;
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+	public Integer getQtdEst() {
+		return qtdEst;
+	}
+
+	public void setQtdEst(Integer qtdEst) {
+		this.qtdEst = qtdEst;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codProd == null) ? 0 : codProd.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		if (codProd == null) {
+			if (other.codProd != null)
+				return false;
+		} else if (!codProd.equals(other.codProd))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Produto [codProd=" + codProd + ", nomeProd=" + nomeProd + ", precoProd=" + precoProd + ", qtdEstoque="
-				+ qtdEstoque + "]";
-	}
+		return "Produto [codProd=" + codProd + ", nomeProd=" + nomeProd + ", Marca=" + Marca + ", preco=" + preco
+				+ ", qtdEst=" + qtdEst + "]";
+	}		
 	
 	
 }
